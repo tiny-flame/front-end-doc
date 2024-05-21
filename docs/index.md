@@ -23,12 +23,12 @@ features:
   - icon: 🥩
     title: 技术文章
     details: 不定期更新，助你保持对技术发展的了解
-    link: /front-end-docs/新技术/hybird
+    link: /interview-docs/index
     linkText: 开始阅读
   - icon: 🍔
     title: 前端面试
     details: 收录前端面试常见问题及解答，助你备战面试
-    link: /front-end-docs/杂项/面试/README
+    link: /interview-docs/index
     linkText: 开始学习
   - icon: 🍪
     title: 实用代码片段
@@ -38,7 +38,7 @@ features:
   - icon: 🍟
     title: 我的开源
     details: 拥抱开源，开发有趣的东西
-    link: /front-end-docs/open-source
+    link: /open-source/index
     linkText: 了解更多
   - icon: 🍳
     title: 今天学了什么
@@ -48,7 +48,7 @@ features:
   - icon: 🌭
     title: 小笔记
     details: 记录零零碎碎的知识点
-    link: /front-end-docs/log/index
+    link: /daily-logs/index
     linkText: 去瞅瞅
 ---
 

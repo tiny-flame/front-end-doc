@@ -1,6 +1,6 @@
 ---
 aside: false
-sidebar: false
+sidebar: true
 editLink: false
 ---
 

@@ -2,7 +2,7 @@
  * @Author: liguokang && li-gu@outlook.com
  * @Date: 2024-05-09 21:24:23
  * @LastEditors: liguokang && li-gu@outlook.com
- * @LastEditTime: 2024-05-21 23:12:30
+ * @LastEditTime: 2024-05-21 23:48:57
  * @FilePath: \front-end-doc\docs\.vitepress\config\base.ts
  * @Description: 
  * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
@@ -18,7 +18,7 @@
  */
 import { createRequire } from 'module'
 import { defineConfig, type DefaultTheme } from 'vitepress'
-import { getSidebar } from 'vitepress-plugin-auto-sidebar'
+import sidebar from './sidebar'
 
 const require = createRequire(import.meta.url)
 const pkg = require('vitepress/package.json')
@@ -29,11 +29,7 @@ export const config = defineConfig({
 
   themeConfig: {
     nav: nav(),
-    sidebar: {
-      '/front-end-docs': { base: '/', items: getSidebar({ contentRoot: '/', contentDirs: ['front-end-docs',], collapsible: false, collapsed: false }), },
-      '/new-learn': { base: '/', items: getSidebar({ contentRoot: '/', contentDirs: ['new-learn'], collapsible: true, collapsed: false }), },
-    },
-
+    sidebar,
     editLink: {
       pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
       text: 'Edit this page on GitHub'

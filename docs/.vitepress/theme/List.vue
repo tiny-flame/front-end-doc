@@ -15,13 +15,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useData, withBase, useRouter } from 'vitepress'
-// import { PostItem } from '../config'
 const { theme } = useData()
 const posts = ref([])
 
 onMounted(() => {
   posts.value = theme.value.post
-  console.log(posts.value,'2222222222222222222222');
   
 })
 const router = useRouter()

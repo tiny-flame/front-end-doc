@@ -151,7 +151,7 @@ export function useSidebarControl(
 
   const isActiveLink = ref(false)
   const updateIsActiveLink = () => {
-    isActiveLink.value = isActive(page.value.relativePath, item.value.link)
+    isActiveLink.value = isActive(page.value.relativePath, item.value.link || item.value)
   }
 
   watch([page, item, hash], updateIsActiveLink)
@@ -176,7 +176,7 @@ export function useSidebarControl(
   })
 
   watchPostEffect(() => {
-    ;(isActiveLink.value || hasActiveLink.value) && (collapsed.value = false)
+    ; (isActiveLink.value || hasActiveLink.value) && (collapsed.value = false)
   })
 
   function toggle() {

@@ -10,8 +10,6 @@
 import { defineConfig } from 'vitepress'
 import { getPosts } from "../theme/utils";
 import UnoCSS from 'unocss/vite'
-// import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
-// import { getSidebar } from 'vitepress-plugin-auto-sidebar'
 
 export const shared = defineConfig({
   title: '技术手札', lang: 'zh-Hans',
@@ -21,11 +19,6 @@ export const shared = defineConfig({
   metaChunk: true,
   vite: {
     plugins: [
-      // // @ts-ignore
-      // AutoSidebar({
-      //   ignoreIndexItem: true
-      // }),
-      // // @ts-ignore
       UnoCSS()
     ]
   },
