@@ -1,24 +1,5 @@
-English version repo and Gitbook is on [english branch](https://github.com/labuladong/fucking-algorithm/tree/english). Just enjoy：)
+# 算法小抄
 
-# labuladong 的算法小抄
-
-<p align='center'>
-<a href="https://labuladong.github.io/algo" target="_blank"><img alt="Website" src="https://img.shields.io/website?label=%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%AD%90%E4%B9%A6&style=flat-square&down_color=blue&down_message=%E7%82%B9%E8%BF%99%E9%87%8C&up_color=blue&up_message=%E7%82%B9%E8%BF%99%E9%87%8C&url=https%3A%2F%2Flabuladong.gitee.io%2Falgo&logo=Gitea"></a>
-<a href="https://github.com/labuladong/fucking-algorithm" target="_blank"><img alt="GitHub" src="https://img.shields.io/github/stars/labuladong/fucking-algorithm?label=Stars&style=flat-square&logo=GitHub"></a>
-</p>
-
-<p align='center'>
-<a href="https://www.github.com/labuladong" target="_blank"><img src="https://img.shields.io/badge/作者-@labuladong-000000.svg?style=flat-square&logo=GitHub"></a>
-<a href="https://www.zhihu.com/people/labuladong" target="_blank"><img src="https://img.shields.io/badge/%E7%9F%A5%E4%B9%8E-@labuladong-000000.svg?style=flat-square&logo=Zhihu"></a>
-<a href="https://i.loli.net/2020/10/10/MhRTyUKfXZOlQYN.jpg" target="_blank"><img src="https://img.shields.io/badge/公众号-@labuladong-000000.svg?style=flat-square&logo=WeChat"></a>
-<a href="https://space.bilibili.com/14089380" target="_blank"><img src="https://img.shields.io/badge/B站-@labuladong-000000.svg?style=flat-square&logo=Bilibili"></a>
-</p>
-
-![](pictures/cover.jpg)
-
-好消息，2023 最新版《labuladong 的算法笔记》纸质书出版啦！微信扫码查看简介👆
-
-[![Star History Chart](https://api.star-history.com/svg?repos=labuladong/fucking-algorithm&type=Date)](https://star-history.com/#labuladong/fucking-algorithm&Date)
 
 本仓库总共 60 多篇原创文章，都是基于 LeetCode 的题目，涵盖了所有题型和技巧，而且一定要做到**举一反三，通俗易懂**，绝不是简单的代码堆砌，后面有目录。
 
@@ -32,61 +13,12 @@ English version repo and Gitbook is on [english branch](https://github.com/labul
 
 **做啥事情做多了，都能发现套路的，我把各种算法套路框架总结出来，相信可以帮助其他人少走弯路**。我这个纯靠自学的小童鞋，花了一年时间刷题和总结，自己写了一份算法小抄，后面有目录，这里就不废话了。
 
-## 在开始学习之前
-
-**1、先给本仓库点个 star，满足一下我的虚荣心**，文章质量绝对值你一个 star。我还在继续创作，给我一点继续写文的动力，感谢。
-
-**2、建议关注我的公众号 labuladong，坚持高质量原创，说是最良心最硬核的技术公众号都不为过**。本仓库的文章就是从公众号里整理出来的**一部分**内容，公众号可以查看更多内容：
-
-<p align='center'>
-<img src="./pictures/qrcode.jpg" width = "200" />
-</p>
-
-**3、建议收藏我的在线网站，每篇文章开头都有对应的力扣题目链接，可以边看文章边刷题，一共可以手把手带你刷 300 道题目**：
-
-GitHub Pages 地址：https://labuladong.github.io/algo/
-
-Gitee Pages 地址：https://labuladong.gitee.io/algo/
-
-**另外建议关注 [我的 B 站](https://space.bilibili.com/14089380)，我把一系列核心算法技巧的文章都录制成了领读视频，方便大家学习**。
 
 
 ## 安装使用 labuladong 的刷题全家桶
 
 > tip：labuladong 的刷题全家桶由学习网站、《算法秘籍》《刷题笔记》两本 PDF、Chrome/vscode/Jetbrain 三个不同平台的刷题插件组成，致力于为大家提供最丝滑的刷题体验。公众号后台回复关键词「**全家桶**」即可获取下载和使用手册。
 
-### 一、公众号/学习网站
-
-内容当然是我的系列算法教程中最核心的部分，其他的插件和 PDF 教材都是为内容服务的。我的算法教程都发布在公众号/网站上，相信你会未来会在这里花费大量的学习时间，而不是仅仅加入收藏夹~
-
-![](https://labuladong.github.io/pictures/简介/web_intro.jpg)
-
-**具体介绍**：[labuladong 的公众号/算法网站使用手册](https://labuladong.github.io/article/fname.html?fname=网站介绍)
-
-### 二、PDF 教材
-
-鉴于我积累的算法教程比较多，为了防止过于陡峭的学习曲线，我精心挑选了必知必会的算法技巧，设计了一套循序渐进的学习路线，并制作成 PDF 方便大家离线学习/记笔记。
-
-PDF 共两本，一本《labuladong 的算法秘籍》类似教材，帮你系统掌握算法的知识体系：
-
-![](https://labuladong.github.io/pictures/简介/pdf3.jpg)
-
-另一本《labuladong 的刷题笔记》类似练习册，助你遨游题海，随心所欲地运用所学的技巧解题：
-
-![](https://labuladong.github.io/pictures/简介/pdf5.jpg)
-
-**具体介绍**：[配套 PDF 算法教材使用手册](https://labuladong.github.io/article/fname.html?fname=pdf简介)
-
-### 三、精品课程
-
-如果你认可我的算法教程，可以购买我的付费课程，目前我制作完成了[《数据结构精品课》](https://labuladong.github.io/article/fname.html?fname=ds课程简介) 和[《二叉树（递归）专题课》](https://labuladong.github.io/article/fname.html?fname=tree课程简介)。另外，还有押金形式的[刷题打卡挑战](https://labuladong.github.io/article/fname.html?fname=打卡挑战简介)，完成打卡后押金将全额返还，打卡挑战适用于自己刷题坚持不下来的小伙伴参加。
-
-课程和打卡挑战都可以在我的知识店铺购买和报名：
-
-<p align='center'>
-<img src="https://labuladong.github.io/pictures/xiaoe_qr.png" width = "200" />
-
-</p>
 
 话说回来，我今天能拥有这么多读者，都靠大家捧场，大家能从我这学到东西我就很高兴，不差钱的买个课捧个钱场，缺钱的把我的公众号/网站推荐给身边的朋友捧个人场，都是对我的支持！
 
@@ -114,9 +46,6 @@ PDF 共两本，一本《labuladong 的算法秘籍》类似教材，帮你系�
 
 **安装使用手册**：[Jetbrains 插件安装使用手册](https://labuladong.github.io/article/fname.html?fname=jb插件简介)
 
-最后，把上面这些工具汇总成一张图：
-
-![](https://labuladong.github.io/pictures/others/全家桶.jpg)
 
 祝大家学习愉快，在题海中自在遨游！
 
@@ -307,63 +236,3 @@ PDF 共两本，一本《labuladong 的算法秘籍》类似教材，帮你系�
   * [如何学习开源项目，我又总结了套路](https://labuladong.github.io/article/fname.html?fname=调试技巧)
 
 <!-- table end -->
-
-# 感谢如下大佬参与翻译
-
-按照昵称字典序排名：
-
-[ABCpril](https://github.com/ABCpril), 
-[andavid](https://github.com/andavid), 
-[bryceustc](https://github.com/bryceustc), 
-[build2645](https://github.com/build2645), 
-[CarrieOn](https://github.com/CarrieOn), 
-[cooker](https://github.com/xiaochuhub), 
-[Dong Wang](https://github.com/Coder2Programmer), 
-[ExcaliburEX](https://github.com/ExcaliburEX), 
-[floatLig](https://github.com/floatLig), 
-[ForeverSolar](https://github.com/foreversolar), 
-[Fulin Li](https://fulinli.github.io/), 
-[Funnyyanne](https://github.com/Funnyyanne), 
-[GYHHAHA](https://github.com/GYHHAHA), 
-[Hi_archer](https://hiarcher.top/), 
-[Iruze](https://github.com/Iruze), 
-[Jieyixia](https://github.com/Jieyixia), 
-[Justin](https://github.com/Justin-YGG), 
-[Kevin](https://github.com/Kevin-free), 
-[Lrc123](https://github.com/Lrc123), 
-[lriy](https://github.com/lriy), 
-[Lyjeeq](https://github.com/Lyjeeq), 
-[MasonShu](https://greenwichmt.github.io/), 
-[Master-cai](https://github.com/Master-cai), 
-[miaoxiaozui2017](https://github.com/miaoxiaozui2017), 
-[natsunoyoru97](https://github.com/natsunoyoru97), 
-[nettee](https://github.com/nettee), 
-[PaperJets](https://github.com/PaperJets), 
-[qy-yang](https://github.com/qy-yang), 
-[realism0331](https://github.com/realism0331), 
-[SCUhzs](https://github.com/brucecat), 
-[Seaworth](https://github.com/Seaworth), 
-[shazi4399](https://github.com/shazi4399), 
-[ShuozheLi](https://github.com/ShuoZheLi/), 
-[sinjoywong](https://blog.csdn.net/SinjoyWong), 
-[sunqiuming526](https://github.com/sunqiuming526), 
-[Tianhao Zhou](https://github.com/tianhaoz95), 
-[timmmGZ](https://github.com/timmmGZ), 
-[tommytim0515](https://github.com/tommytim0515), 
-[ucsk](https://github.com/ucsk), 
-[wadegrc](https://github.com/wadegrc), 
-[walsvid](https://github.com/walsvid), 
-[warmingkkk](https://github.com/warmingkkk), 
-[Wonderxie](https://github.com/Wonderxie), 
-[wsyzxxxx](https://github.com/wsyzxxxx), 
-[xiaodp](https://github.com/xiaodp), 
-[youyun](https://github.com/youyun), 
-[yx-tan](https://github.com/yx-tan), 
-[Zero](https://github.com/Mr2er0), 
-[Ziming](https://github.com/ML-ZimingMeng/LeetCode-Python3)
-
-# Donate
-
-如果本仓库对你有帮助，可以请作者喝杯速溶咖啡
-
-<img src="pictures/pay.jpg" width = "200" align=center />

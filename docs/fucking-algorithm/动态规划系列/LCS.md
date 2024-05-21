@@ -1,18 +1,5 @@
 # 详解最长公共子序列问题，秒杀三道动态规划题目
 
-<p align='center'>
-<a href="https://github.com/labuladong/fucking-algorithm" target="view_window"><img alt="GitHub" src="https://img.shields.io/github/stars/labuladong/fucking-algorithm?label=Stars&style=flat-square&logo=GitHub"></a>
-<a href="https://appktavsiei5995.pc.xiaoe-tech.com/index" target="_blank"><img class="my_header_icon" src="https://img.shields.io/static/v1?label=精品课程&message=查看&color=pink&style=flat"></a>
-<a href="https://www.zhihu.com/people/labuladong"><img src="https://img.shields.io/badge/%E7%9F%A5%E4%B9%8E-@labuladong-000000.svg?style=flat-square&logo=Zhihu"></a>
-<a href="https://space.bilibili.com/14089380"><img src="https://img.shields.io/badge/B站-@labuladong-000000.svg?style=flat-square&logo=Bilibili"></a>
-</p>
-
-
-
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 和 [递归算法专题课](https://aep.xet.tech/s/3YGcq3) 限时附赠网站会员，全新纸质书[《labuladong 的算法笔记》](https://labuladong.gitee.io/algo/images/book/book_intro_qrcode.jpg) 出版，签名版限时半价！另外，建议你在我的 [网站](https://labuladong.github.io/algo/) 学习文章，体验更好。**
-
-
-
 读完本文，你不仅学会了算法套路，还可以顺便解决如下题目：
 
 | LeetCode | 力扣 | 难度 |
@@ -76,11 +63,3 @@ int longestCommonSubsequence(String s1, String s2);
 
 </details>
 <hr>
-
-
-
-**＿＿＿＿＿＿＿＿＿＿＿＿＿**
-
-本文为会员内容，请扫码关注公众号或 [点这里](https://appktavsiei5995.pc.xiaoe-tech.com/detail/i_6298793ae4b09dda12708be8/1) 查看：
-
-![](https://labuladong.github.io/pictures/qrcode.jpg)
