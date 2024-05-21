@@ -33,7 +33,7 @@ features:
   - icon: 🍪
     title: 实用代码片段
     details: 封装常用且实用代码片段，提高开发效率
-    link: /front-end-docs/实用工具与库/decorateComponentWithProps
+    link: /technical-article/decorateComponentWithProps
     linkText: 提高效率
   - icon: 🍟
     title: 我的开源

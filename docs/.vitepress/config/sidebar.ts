@@ -14,6 +14,7 @@ const sidebar = {
   '/new-learn': { items: getSidebar({ contentDirs: ['new-learn'], collapsed: false }), },
   '/interview-docs': { items: getSidebar({ contentDirs: ['interview-docs'], collapsed: false }), },
   '/daily-logs': { items: getSidebar({ contentDirs: ['daily-logs'], collapsed: false, useFrontmatter: true }), },
+  '/technical-article': { items: getSidebar({ contentDirs: ['technical-article'], collapsed: false, useFrontmatter: true }), },
 }
 
 export default sidebar

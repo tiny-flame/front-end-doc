@@ -59,7 +59,7 @@ export const shared = defineConfig({
     logo: { src: '/logo-min.png', width: 24, height: 24 },
     post: await getPosts(),
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/tiny-flame/front-end-doc' }
     ],
 
     // search: {

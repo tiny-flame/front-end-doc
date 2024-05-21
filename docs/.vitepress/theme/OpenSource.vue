@@ -1,3 +1,12 @@
+<!--
+ * @Author: liguokang && li-gu@outlook.com
+ * @Date: 2024-05-10 01:34:34
+ * @LastEditors: liguokang && li-gu@outlook.com
+ * @LastEditTime: 2024-05-22 05:03:49
+ * @FilePath: \front-end-doc\docs\.vitepress\theme\OpenSource.vue
+ * @Description: 
+ * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
+-->
 <template>
     <div class="">
         <div v-for="item of repositories" :key="item.name" class="text-lg mb-5 cursor-pointer">
@@ -9,12 +18,10 @@
 </template>
 <script setup lang="ts">
 const repositories = [
-    { name: 'MIB', repo: 'https://github.com/QC2168/mib', subtitle: '基于ADB开发的Android快速备份工具' },
-    { name: 'Vite-plugin-vitepress-auto-sidebar', repo: 'https://github.com/QC2168/vite-plugin-vitepress-auto-sidebar', subtitle: 'Vitepress侧边栏自动生成' },
+    { name: 'react-workflows', repo: 'https://github.com/tiny-flame/react-workflows', subtitle: '一个react版的workflows编辑器' },
+    { name: 'front-end-doc', repo: 'https://github.com/tiny-flame/front-end-doc', subtitle: '基于Vitepress的前端文档库' },
     { name: 'Vite-plugin-utools', repo: 'https://github.com/QC2168/vite-plugin-utools', subtitle: '高性能构建Utools依赖文件' },
-    { name: 'UseCharts', repo: 'https://github.com/QC2168/useCharts', subtitle: '更简单更优雅的使用Echart方案' },
-    { name: 'Axios-bz', repo: 'https://github.com/QC2168/axios-bz', subtitle: 'Axios封装方案·无感刷新Token·API集中管理·拦截管理|TS类型保护' },
-    { name: 'Utools-plugin-template', repo: 'https://github.com/QC2168/utools-plugin-template', subtitle: 'Utools插件快速开发模板（Vite+Vue3）' },
+    { name: 'UseCharts', repo: 'https://github.com/tiny-flame/vue3-gantt', subtitle: '一个vue3版的甘特图组件' },
     { name: 'Code Snippets', repo: 'https://github.com/QC2168/snippets', subtitle: '这些实用的代码片段，使您在开发中得心应手，犹如鱼在水中般自如' }
 ];
 
