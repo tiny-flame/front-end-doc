@@ -71,7 +71,7 @@ export function resolveHeaders(
   const levelsRange =
     (typeof range === 'object' && !Array.isArray(range)
       ? range.level
-      : range) || 2
+      : range) || 1
 
   const [high, low]: [number, number] =
     typeof levelsRange === 'number'
