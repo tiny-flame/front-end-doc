@@ -14,7 +14,7 @@ hero:
       link: /front-end-docs/知识模型
     - theme: alt
       text: 前端知识总结
-      link: /front-end-docs/README
+      link: /front-end-docs/index
   image:
     src: /logo.png
     alt: 技术手札

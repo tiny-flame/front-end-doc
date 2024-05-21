@@ -26,24 +26,24 @@ export const config = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
-    // {
-    //   text: 'Guilde',
-    //   link: '/front-end-docs/README',
-    //   activeMatch: '/guide/'
-    // },
-    // {
-    //   text: pkg.version,
-    //   items: [
-    //     {
-    //       text: 'Changelog',
-    //       link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
-    //     },
-    //     {
-    //       text: 'Contributing',
-    //       link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
-    //     }
-    //   ]
-    // }
+    {
+      text: 'Guilde',
+      link: '/front-end-docs/index',
+      activeMatch: '/guide/'
+    },
+    {
+      text: '面试',
+      items: [
+        {
+          text: '面试题',
+          link: '/front-end-docs/index'
+        },
+        {
+          text: '手写题',
+          link: '/fucking-algorithm/index'
+        }
+      ]
+    }
   ]
 }
 
