@@ -2,7 +2,7 @@
  * @Author: liguokang && li-gu@outlook.com
  * @Date: 2024-05-09 21:24:23
  * @LastEditors: liguokang && li-gu@outlook.com
- * @LastEditTime: 2024-05-21 21:59:19
+ * @LastEditTime: 2024-05-21 23:12:30
  * @FilePath: \front-end-doc\docs\.vitepress\config\base.ts
  * @Description: 
  * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
@@ -30,7 +30,8 @@ export const config = defineConfig({
   themeConfig: {
     nav: nav(),
     sidebar: {
-      '/': { base: '/', items: getSidebar({ contentRoot: '/', contentDirs: ['front-end-docs'], collapsible: false, collapsed: false }), },
+      '/front-end-docs': { base: '/', items: getSidebar({ contentRoot: '/', contentDirs: ['front-end-docs',], collapsible: false, collapsed: false }), },
+      '/new-learn': { base: '/', items: getSidebar({ contentRoot: '/', contentDirs: ['new-learn'], collapsible: true, collapsed: false }), },
     },
 
     editLink: {
