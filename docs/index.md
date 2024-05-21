@@ -23,7 +23,7 @@ features:
   - icon: 🥩
     title: 技术文章
     details: 不定期更新，助你保持对技术发展的了解
-    link: /interview-docs/index
+    link: /front-end-docs/index
     linkText: 开始阅读
   - icon: 🍔
     title: 前端面试

@@ -1,8 +1,12 @@
----
-aside: false
-sidebar: false
-editLink: false
----
+<!--
+ * @Author: liguokang && li-gu@outlook.com
+ * @Date: 2024-05-10 01:17:06
+ * @LastEditors: liguokang && li-gu@outlook.com
+ * @LastEditTime: 2024-05-22 05:12:17
+ * @FilePath: \front-end-doc\docs\front-end-docs\index.md
+ * @Description: 
+ * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
+-->
 
 <List />
 
