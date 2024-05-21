@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
   <p class="VPLastUpdated">
-    {{ theme.lastUpdated?.text || theme.lastUpdatedText || 'Last updated' }}:
+    {{ theme.lastUpdated?.text || theme.lastUpdatedText || '最后更新于' }}:
     <time :datetime="isoDatetime">{{ datetime }}</time>
   </p>
 </template>

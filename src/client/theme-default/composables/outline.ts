@@ -19,7 +19,7 @@ export function resolveTitle(theme: DefaultTheme.Config) {
       !Array.isArray(theme.outline) &&
       theme.outline.label) ||
     theme.outlineTitle ||
-    'On this page'
+    '页面导航'
   )
 }
 
@@ -75,7 +75,7 @@ export function resolveHeaders(
 
   const [high, low]: [number, number] =
     typeof levelsRange === 'number'
-      ? [levelsRange, levelsRange]
+      ? [levelsRange, 6]
       : levelsRange === 'deep'
         ? [2, 6]
         : levelsRange
@@ -97,7 +97,7 @@ export function resolveHeaders(
       for (let j = i - 1; j >= 0; j--) {
         const prev = headers[j]
         if (prev.level < cur.level) {
-          ;(prev.children || (prev.children = [])).push(cur)
+          ; (prev.children || (prev.children = [])).push(cur)
           continue outer
         }
       }

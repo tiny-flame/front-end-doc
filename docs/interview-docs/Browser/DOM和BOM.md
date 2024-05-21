@@ -5,7 +5,7 @@ tags: [Browser]
 
 是不是有点回到刚开始学JavaScript的时候了，什么是DOM和什么是BOM？
 
-## DOM
+### DOM
 
 全称Document Object Model，是 HTML 和 XML 文档的编程接口。通过特定的接口可以访问对应的对象属性和方法，也可以获取节点信息。
 

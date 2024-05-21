@@ -1,21 +1,3 @@
-/*
- * @Author: liguokang && li-gu@outlook.com
- * @Date: 2024-05-09 21:24:23
- * @LastEditors: liguokang && li-gu@outlook.com
- * @LastEditTime: 2024-05-21 23:48:57
- * @FilePath: \front-end-doc\docs\.vitepress\config\base.ts
- * @Description: 
- * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
- */
-/*
- * @Author: liguokang && li-gu@outlook.com
- * @Date: 2024-05-09 21:24:23
- * @LastEditors: liguokang && li-gu@outlook.com
- * @LastEditTime: 2024-05-21 19:50:34
- * @FilePath: \vitepress\docs\.vitepress\config\en.ts
- * @Description: 
- * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
- */
 import { createRequire } from 'module'
 import { defineConfig, type DefaultTheme } from 'vitepress'
 import sidebar from './sidebar'
@@ -31,8 +13,8 @@ export const config = defineConfig({
     nav: nav(),
     sidebar,
     editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
+      pattern: 'https://github.com/tiny-flame/front-end-doc/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页面'
     },
 
     footer: {

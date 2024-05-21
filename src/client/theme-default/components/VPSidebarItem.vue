@@ -42,11 +42,12 @@ const classes = computed(() => {
   if (props.link) {
     const _r = decodeURI(route.path)
     const _link = props.link
-      ?.replace('\\', '/')
+      ?.replace(/\\/g, '/')
       .replace('.md', '')
       .replace('index', '')
     out = out || _r == `/${_link}`
 
+    // console.log(_r , `/${_link}`, props.depth, 'ffffffffffffffffff')
   }
 
   return [
