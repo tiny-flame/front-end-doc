@@ -1,5 +1,5 @@
 /coverage
-/src/client/shared.ts
+# /src/client/shared.ts
 /src/node/shared.ts
 *.log
 *.tgz

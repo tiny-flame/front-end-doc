@@ -14,7 +14,7 @@ export function usePrevNext() {
     const candidates = uniqBy(links, (link) => link.link.replace(/[?#].*$/, ''))
 
     const index = candidates.findIndex((link) => {
-      return isActive(page.value.relativePath, link.link)
+      return isActive(page.value.relativePath, link.link?.replace('\\', '/'))
     })
 
     const hidePrev =
