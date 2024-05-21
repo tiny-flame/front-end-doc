@@ -3,10 +3,14 @@ import { computed } from 'vue'
 import type { DefaultTheme } from 'vitepress/theme'
 import { useSidebarControl } from '../composables/sidebar'
 import VPLink from './VPLink.vue'
+import { useRoute } from 'vitepress'
+
+const route = useRoute()
 
 const props = defineProps<{
   item: DefaultTheme.SidebarItem
   depth: number
+  link?: string
 }>()
 
 const {
@@ -33,14 +37,27 @@ const textTag = computed(() => {
 
 const itemRole = computed(() => (isLink.value ? undefined : 'button'))
 
-const classes = computed(() => [
-  [`level-${props.depth}`],
-  { collapsible: collapsible.value },
-  { collapsed: collapsed.value },
-  { 'is-link': isLink.value },
-  { 'is-active': isActiveLink.value },
-  { 'has-active': hasActiveLink.value }
-])
+const classes = computed(() => {
+  let out = false
+  if (props.link) {
+    const _r = decodeURI(route.path)
+    const _link = props.link
+      ?.replace('\\', '/')
+      .replace('.md', '')
+      .replace('index', '')
+    out = out || _r == `/${_link}`
+
+  }
+
+  return [
+    [`level-${props.depth}`],
+    { collapsible: collapsible.value },
+    { collapsed: collapsed.value },
+    { 'is-link': isLink.value },
+    { 'is-active': isActiveLink.value || out },
+    { 'has-active': hasActiveLink.value }
+  ]
+})
 
 function onItemInteraction(e: MouseEvent | Event) {
   if ('key' in e && e.key !== 'Enter') {
@@ -99,6 +116,7 @@ function onCaretClick() {
         <VPSidebarItem
           v-for="i in item.items"
           :key="i.text"
+          :link="i.link"
           :item="i"
           :depth="depth + 1"
         />
