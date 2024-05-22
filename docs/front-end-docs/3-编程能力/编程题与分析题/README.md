@@ -2,8 +2,9 @@
 
 链接可能不够完整，直接看对应目录
 
+```
 - [bind、apply 实现](bind、apply实现.md)
-- [DOM 树遍历](DOM树遍历.md)
+- [DOM 树遍历](./DOM树遍历.md)
 - [README](README.MD)
 - [this 指向](this指向.md)
 - [异步编程](异步编程.md)
@@ -13,3 +14,5 @@
 - [闭包](闭包.md)
 - [防抖节流](防抖节流.md)
 - [手写 Promise](手写Promise.md)
+
+```

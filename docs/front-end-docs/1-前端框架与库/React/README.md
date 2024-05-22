@@ -1,5 +1,6 @@
 # React
 
+```
 ## [VDOM](VDOM.md)
 
 ## [Redux](Redux.md)
@@ -8,6 +9,7 @@
 
 ## [React 与 Vue 区别](react与vue区别.md)
 
+```
 ### React 的工作原理
 
 React 会创建一个虚拟 DOM(virtual DOM)。当一个组件中的状态改变时，React 首先会通过 "diffing" 算法来标记虚拟 DOM 中的改变，第二步是调节(reconciliation)，会用 diff 的结果来更新 DOM。
