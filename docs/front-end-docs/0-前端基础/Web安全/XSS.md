@@ -1,6 +1,6 @@
 # XSS 跨站脚本攻击
 
-![xss](img/xss.png)
+<!-- ![xss](/img/xss.png) -->
 
 XSS ( Cross Site Scripting ) 是指恶意攻击者利用网站没有对用户提交数据进行转义处理或者过滤不足的缺点，进而添加一些代码，嵌入到 web 页面中去。使别的用户访问都会执行相应的嵌入代码。
 
@@ -47,7 +47,7 @@ XSS ( Cross Site Scripting ) 是指恶意攻击者利用网站没有对用户提
   - 某些节点属性值是由用户输入的内容生成的。那么可能会被封闭标签后添加 script 标签。
 
 ```html
-<img src="${image}" /> <img src="1" onerror="alert(1)" />
+\<img src="${image}" /> <img src="1" onerror="alert(1)" />
 ```
 
 - Javascript 代码
@@ -126,7 +126,7 @@ alert(1);
 #### 富文本
 
 按照黑名单过滤： script 等
-但是 html 标签中能执行 html 代码的属性太多了，比如 onclick, onhover,onerror, <a href="jacascript:alert(1)">
+但是 html 标签中能执行 html 代码的属性太多了，比如 onclick, onhover,onerror, \<a href="jacascript:alert(1)">
 
 ```js
 function xssFilter = function (html) {
@@ -178,7 +178,7 @@ CSP 本质上就是建立白名单，开发者明确告诉浏览器哪些外部�
 通常可以通过两种方式来开启 CSP：
 
 - 设置 HTTP Header 中的 Content-Security-Policy
-- 设置 meta 标签的方式 `<meta http-equiv="Content-Security-Policy">`
+- 设置 meta 标签的方式 \`<meta http-equiv="Content-Security-Policy">`
 
 以设置 HTTP Header 来举例
 
@@ -190,9 +190,9 @@ Content-Security-Policy: default-src ‘self’
 
 - 图片只允许加载 HTTPS 协议
 
-```
+```markdown
 Content-Security-Policy: img-src https://*
-```
+ 
 
 - 允许加载任何来源框架
 
@@ -210,30 +210,30 @@ Content-Security-Policy: child-src 'none'
 
     <scirpt>alert("xss");</script>
 
-### `<img>`
+### \`<img>`
 
-    <img src=1 onerror=alert("xss");>
+    \<img src=1 onerror=alert("xss");>
 
-### `<input>`
+### \`<input>`
 
-    <input onfocus="alert('xss');">
+    \<input onfocus="alert('xss');">
 
     竞争焦点，从而触发onblur事件
-    <input onblur=alert("xss") autofocus><input autofocus>
+    \<input onblur=alert("xss") autofocus><input autofocus>
 
     通过autofocus属性执行本身的focus事件，这个向量是使焦点自动跳到输入元素上,触发焦点事件，无需用户去触发
-    <input onfocus="alert('xss');" autofocus>
+    \<input onfocus="alert('xss');" autofocus>
 
-### `<details>`
+### \`<details>`
 
-    <details ontoggle="alert('xss');">
+    \<details ontoggle="alert('xss');">
 
     使用open属性触发ontoggle事件，无需用户去触发
-    <details open ontoggle="alert('xss');">
+    \<details open ontoggle="alert('xss');">
 
-### `<svg>`
+### \`<svg>`
 
-    <svg onload=alert("xss");>
+    \<svg onload=alert("xss");>
 
 ### `<select>`
 
@@ -263,9 +263,9 @@ Content-Security-Policy: child-src 'none'
     <body
     onscroll=alert("xss");><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><input autofocus>
 
-### `<textarea>`
+### \`<textarea>`
 
-    <textarea onfocus=alert("xss"); autofocus>
+    \<textarea onfocus=alert("xss"); autofocus>
 
 ### `<keygen>`
 
@@ -275,9 +275,9 @@ Content-Security-Policy: child-src 'none'
 
     <marquee onstart=alert("xss")></marquee> //Chrome不行，火狐和IE都可以
 
-### `<isindex>`
+### \`<isindex>`
 
-    <isindex type=image src=1 onerror=alert("xss")>//仅限于IE
+    \<isindex type=image src=1 onerror=alert("xss")>//仅限于IE
 
 ### 利用 link 远程包含 js 文件
 
