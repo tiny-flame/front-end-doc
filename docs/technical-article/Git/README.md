@@ -9,10 +9,10 @@ Git 更像是把数据看作是对小型文件系统的一组快照。 每次你
 > In computer systems, a snapshot is the state of a system at a particular point in time.
 
 记录差异
-![记录差异](../../img/git-jlcy.png)
+![记录差异](../../front-end-docs/img/git-jlcy.png)
 
 记录快照
-![记录快照](../../img/git-glkz.png)
+![记录快照](../../front-end-docs/img/git-glkz.png)
 
 ### 三种状态
 
@@ -29,7 +29,7 @@ Git 更像是把数据看作是对小型文件系统的一组快照。 每次你
 - 工作目录
   - 工作目录是对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上供你使用或修改。
 
-![三个区域](../../img/git-3-place.png)
+![三个区域](../../front-end-docs/img/git-3-place.png)
 
 ### 基本的 Git 工作流程
 
@@ -93,7 +93,7 @@ doc/**/*.pdf
 
 一般是 vim 或 emacs。当然也可以按照 起步 介绍的方式，使用 `git config --global core.editor` 命令设定你喜欢的编辑软件。
 
-![commit](../../img/git-commit.png)
+![commit](../../front-end-docs/img/git-commit.png)
 
 也可以使用`git commit -m "修改描述"` 这种直接输入描述的方式提交修改。
 

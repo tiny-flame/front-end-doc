@@ -1,12 +1,3 @@
-<!--
- * @Author: liguokang && li-gu@outlook.com
- * @Date: 2024-05-09 21:11:53
- * @LastEditors: liguokang && li-gu@outlook.com
- * @LastEditTime: 2024-05-21 22:00:37
- * @FilePath: \front-end-doc\docs\front-end-docs\6-工程架构\ServerLess.md
- * @Description: 
- * Copyright (c) 2024 by Digital Management Center(DMC), All Rights Reserved. 
--->
 ## Serverless
 
 ### 什么是Serverless
@@ -31,11 +22,11 @@ CloudFlare对其定义：
 
 Serverless = Faas (Function as a service) + Baas (Backend as a service)
 
-![img](/Users/bytedance/Documents/self/front-end-docs/img/1729cf3b0a40a037.png)
+<!-- ![img](/Users/bytedance/Documents/self/front-end-docs/img/1729cf3b0a40a037.png) -->
 
 ###  云函数（Faas）
 
 FaaS（Function-as-a-Service）是服务商提供一个平台、提供给用户开发、运行管理这些函数的功能，而无需搭建和维护基础框架，是一种事件驱动由消息触发的函数服务
 
-![img](/Users/bytedance/Documents/self/front-end-docs/img/1-20210413133231936)
+<!-- ![img](/Users/bytedance/Documents/self/front-end-docs/img/1-20210413133231936) -->
 
