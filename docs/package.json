@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "publishRm": "vitepress build && gulp remotePublish",
     "build": "vitepress build",
     "dev": "vitepress dev",
     "lunaria:build": "lunaria build",
@@ -11,6 +12,9 @@
   },
   "devDependencies": {
     "@lunariajs/core": "^0.0.32",
+    "gulp": "^5.0.0",
+    "gulp-sftp-socksv5": "^0.1.6",
+    "gulp-ssh": "^0.7.0",
     "markdown-it-mathjax3": "^4.3.2",
     "open-cli": "^8.0.0",
     "vitepress": "workspace:*"
