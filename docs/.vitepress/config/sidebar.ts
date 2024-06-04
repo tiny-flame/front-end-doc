@@ -10,9 +10,9 @@
 import { getSidebar } from 'vitepress-plugin-auto-sidebar'
 
 const sidebar = {
-  '/front-end-docs': { items: getSidebar({ contentDirs: ['front-end-docs'], collapsed: false }), },
+  '/front-end-docs': { items: getSidebar({ contentDirs: ['front-end-docs'], collapsed: true }), },
   '/new-learn': { items: getSidebar({ contentDirs: ['new-learn'], collapsed: false }), },
-  '/interview-docs': { items: getSidebar({ contentDirs: ['interview-docs'], collapsed: false }), },
+  '/interview-docs': { items: getSidebar({ contentDirs: ['interview-docs'], collapsed: true }), },
   '/daily-logs': { items: getSidebar({ contentDirs: ['daily-logs'], collapsed: false, useFrontmatter: true }), },
   '/technical-article': { items: getSidebar({ contentDirs: ['technical-article'], collapsed: false, useFrontmatter: true }), },
   '/fucking-algorithm': { items: getSidebar({ contentDirs: ['fucking-algorithm'], collapsed: false, useFrontmatter: true }), },

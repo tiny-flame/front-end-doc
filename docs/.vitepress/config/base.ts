@@ -36,7 +36,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         {
           text: '面试题',
-          link: '/front-end-docs/index'
+          link: '/interview-docs/'
         },
         {
           text: '手写题',
