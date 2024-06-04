@@ -10,7 +10,7 @@
 import { getSidebar } from 'vitepress-plugin-auto-sidebar'
 
 const sidebar = {
-  '/front-end-docs': { items: getSidebar({ contentDirs: ['front-end-docs'], collapsed: true }), },
+  '/front-end-docs': { items: getSidebar({ contentDirs: ['front-end-docs'], collapsed: false }), },
   '/new-learn': { items: getSidebar({ contentDirs: ['new-learn'], collapsed: false }), },
   '/interview-docs': { items: getSidebar({ contentDirs: ['interview-docs'], collapsed: true }), },
   '/daily-logs': { items: getSidebar({ contentDirs: ['daily-logs'], collapsed: false, useFrontmatter: true }), },

@@ -1,35 +1,30 @@
-> 作者：Novlan1               
-> 链接：https://juejin.cn/post/7041068763566833672?searchId=2024052922533748D0B2EA437D0D9BF416             
-> 来源：稀土掘金                  
-> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。                    
-
----------
+# Babel源码解析之@babel/parser
 
 ## 一、开始
 
-[上篇文章](https://juejin.cn/post/7041068341754069006/ "https://juejin.cn/post/7041068341754069006/")介绍了[@babel/core](https://github.com/babel/babel/blob/v7.16.4/packages/babel-core/src/index.ts "https://github.com/babel/babel/blob/v7.16.4/packages/babel-core/src/index.ts")，这次分析下[@babel/parser](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js")。
+`上篇文章`介绍了`@babel/core`，这次分析下`@babel/parser`。
 
 `@babel/parser`主要可分为词法分析和语法分析两大部分，我们来看下二者都是如何运作、如何结合的。
 
 ### 二、API说明
 
-`babel`之前的版本是直接调用了[recast](https://github.com/benjamn/recast "https://github.com/benjamn/recast")库，来生成的AST。现在的`@babel/parser`很大程度借鉴了[acorn](https://github.com/acornjs/acorn "https://github.com/acornjs/acorn")。
+`babel`之前的版本是直接调用了`recast`库，来生成的AST。现在的`@babel/parser`很大程度借鉴了`acorn`。
 
-看源码之前可以先看[文档](https://babeljs.io/docs/en/babel-parser "https://babeljs.io/docs/en/babel-parser")，对它的功能、API有基本认识。
+看源码之前可以先看`文档`，对它的功能、API有基本认识。
 
-`@babel/parser`对外主要暴露了[parse](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L18 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L18")和[parseExpression](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L62 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L62")两个API，形式为：
+`@babel/parser`对外主要暴露了`parse`和`parseExpression`两个API，形式为：
 
 ```js
-babelParser.parse(code, [options])
+babelParser.parse(code, `options])
 ```
 
-看下`options`中的[sourceType](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L19 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js#L19")参数，其值可以是`script`、`module`、`unambiguous`，默认是`script`。
+看下`options`中的`sourceType`参数，其值可以是`script`、`module`、`unambiguous`，默认是`script`。
 
 如果是`unambiguous`的话会根据代码中是否出现`import/export`关键词来判断`sourceType`，如果出现了`import/export`则将`sourceType`更新为`module`，否则为`script`。
 
 ### 三、源码分析
 
-本次分析的[@babel/parser](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js")的版本是`v7.16.4`。
+本次分析的`@babel/parser`的版本是`v7.16.4`。
 
 ### 1. 目录结构
 
@@ -41,7 +36,7 @@ markdown- parser
   - comment
   - error
   - expression
-  - index
+  - index111
   - lval
   - node
   - statement
@@ -51,13 +46,13 @@ markdown- parser
   - typescript
 - tokenizer
   - context
-  - index
+  - index111
   - state
 - utils
   - identifier
   - location
   - scope
-- index
+- index111
 ```
 
 可以看出它主要包含3个部分：`tokenizer`、`plugins`、`parser`。其中
@@ -66,8 +61,8 @@ markdown- parser
 2. `parser`包含`node`、`statement`、`expression`等；
 3. `plugins`则是用来帮助解析`ts`、`jsx`等语法的。
 
-从[index.js](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/index.js")看起，当调用`parser.parse`方法后，会实例化一个[Parser](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/index.js#L12 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/index.js#L12")，就是上面`parser/index.js`文件中的`Parser`。`Parser`的实现很有意思，它有一长串的继承链：
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca97c51e84754bf7975c127ae66df64f~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+从`index111.js`看起，当调用`parser.parse`方法后，会实例化一个`Parser`，就是上面`parser/index111.js`文件中的`Parser`。`Parser`的实现很有意思，它有一长串的继承链：
+!``
 
 为什么要用这种方式组织代码呢？这种继承链的好处是只需要调用`this`就可以获取到其他对象的方法， 而且可以维护一份共同的数据，或者说状态，比如Node节点、`state`状态、`context`上下文、`scope`作用域等。
 
@@ -81,7 +76,7 @@ const { parse } = require('@babel/parser')
 parse('const a = 1', {})
 ```
 
-调用`@babel/parser`的`parse`方法的时候，会先通过[getParser]()实例化一个`Parser`，然后调用`Parser`上面的`parse`方法。
+调用`@babel/parser`的`parse`方法的时候，会先通过`getParser`实例化一个`Parser`，然后调用`Parser`上面的`parse`方法。
 
 ```js
 function getParser(options: ?Options, input: string): Parser {
@@ -97,7 +92,7 @@ function getParser(options: ?Options, input: string): Parser {
 
 由于`Parser`的继承关系，在实例化的时候会在各个类中进行一系列初始化操作，包括`state`、`scope`和`context`等。
 
-然后进入[parse](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/index.js#L35 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/index.js#L35")方法，主要逻辑包括：
+然后进入`parse`方法，主要逻辑包括：
 
 1. 进入初始化的作用域
 2. 通过`startNode`创建`File`节点和`Program`节点
@@ -119,7 +114,7 @@ export default class Parser extends StatementParser {
 }
 ```
 
-[startNode](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/node.js#L93 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/node.js#L93")在`NodeUtil`这个类中，就是新建了一个`Node`，为什么掉用两次`startNode`呢，因为AST的顶层`Node`是`File`类型，其有一个属性`program`，需要新建另一个`Node`，这两个`Node`的`start`、`loc`信息一样。
+`startNode`在`NodeUtil`这个类中，就是新建了一个`Node`，为什么掉用两次`startNode`呢，因为AST的顶层`Node`是`File`类型，其有一个属性`program`，需要新建另一个`Node`，这两个`Node`的`start`、`loc`信息一样。
 
 ```js
 export class NodeUtils extends UtilParser {
@@ -129,9 +124,9 @@ export class NodeUtils extends UtilParser {
 }
 ```
 
-进入[nextToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298")，其在`Tokenizer`中，主要逻辑是判断当前位置是否已经大于输入的长度，如果是的话，调用[finishToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489")去结束`token`，否则调用[getTokenFromCode](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832")或者[readTmplToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1380 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1380")，去从`code中`读取`token`。
+进入`nextToken`，其在`Tokenizer`中，主要逻辑是判断当前位置是否已经大于输入的长度，如果是的话，调用`finishToken`去结束`token`，否则调用`getTokenFromCode`或者`readTmplToken`，去从`code中`读取`token`。
 
-这里的`ct.template`就是以反引号开头，我们的例子是`const a = 1`，会走到[getTokenFromCode](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832")。
+这里的`ct.template`就是以反引号开头，我们的例子是`const a = 1`，会走到`getTokenFromCode`。
 
 `this.codePointAtPos(this.state.pos)`会获取当前字符，我们的例子中是`c`。
 
@@ -156,7 +151,7 @@ export default class Tokenizer extends ParserErrors {
 }
 ```
 
-[getTokenFromCode](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L832")会对传入的`code`做判断，是否是点号、左右括号、逗号、数字等，我们的例子中会走到`default`，调用`isIdentifierStart`判断是否是标志符的开始，是的话调用[readWord](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613")读取一个完整的`token`。
+`getTokenFromCode`会对传入的`code`做判断，是否是点号、左右括号、逗号、数字等，我们的例子中会走到`default`，调用`isIdentifierStart`判断是否是标志符的开始，是的话调用`readWord`读取一个完整的`token`。
 
 ```js
 getTokenFromCode(code: number): void {
@@ -196,7 +191,7 @@ getTokenFromCode(code: number): void {
 }
 ```
 
-[isIdentifierStart](https://github.com/babel/babel/blob/v7.16.4/packages/babel-helper-validator-identifier/src/identifier.ts#L52 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-helper-validator-identifier/src/identifier.ts#L52")的核心就是对字符的`unicode`编码做判断：
+`isIdentifierStart`的核心就是对字符的`unicode`编码做判断：
 
 * 如果`code`编码小于大写的`A`的编码（65），只有`code`是$符号才为`true`
 * 如果`code`编码介于`A-Z`之间（65-90），则为`true`
@@ -220,19 +215,19 @@ export function isIdentifierStart(code: number): boolean {
 }
 ```
 
-在这里我们的`c`可以作为标志符开头，进入[readWord](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613")。
+在这里我们的`c`可以作为标志符开头，进入`readWord`。
 
-[readWord](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613")还是在`Tokenizer`中，作用是读取一个完整的关键字或者标志符。
+`readWord`还是在`Tokenizer`中，作用是读取一个完整的关键字或者标志符。
 
-它首先调用了[readWord1](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1566 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1566")，`readWord1`则会通过[isIdentifierChar](https://github.com/babel/babel/blob/v7.16.4/packages/babel-helper-validator-identifier/src/identifier.ts#L67 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-helper-validator-identifier/src/identifier.ts#L67")判断当前字符是否可以做标志符，来给它的位置`pos`加1，也就是向后移动。
+它首先调用了`readWord1`，`readWord1`则会通过`isIdentifierChar`判断当前字符是否可以做标志符，来给它的位置`pos`加1，也就是向后移动。
 
 我们的例子中，`ch`为`const`的下一个空格的时候会跳出循环，此时`state.pos`为5，得到的word为`const`。
 
-然后判断`word`的类型，是否是关键字。[keywordTypes](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L82 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L82")是一个`Map`，其`key`是各种关键字或者符号等，`value`是一个数字。这里`const`属于关键字，其对应的`value`是67，也就是`type`为67。然后调用[tokenLabelName](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L393 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L393")。
+然后判断`word`的类型，是否是关键字。`keywordTypes`是一个`Map`，其`key`是各种关键字或者符号等，`value`是一个数字。这里`const`属于关键字，其对应的`value`是67，也就是`type`为67。然后调用`tokenLabelName`。
 
-[tokenLabelName](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L393 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/types.js#L393")会根据`type`获取`token`对应的标签，`const`对应的标签是`_const`。
+`tokenLabelName`会根据`type`获取`token`对应的标签，`const`对应的标签是`_const`。
 
-这里顺便看一下`word`不是关键字的逻辑，[readWord](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1613")会把`word`当作用户的自定义变量，比如例子中的`a`。
+这里顺便看一下`word`不是关键字的逻辑，`readWord`会把`word`当作用户的自定义变量，比如例子中的`a`。
 
 ```js
 // Read an identifier or keyword token. Will check for reserved
@@ -294,9 +289,9 @@ readWord1(firstCode: number | void): string {
 }
 ```
 
-接着进入[finishToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489")。
+接着进入`finishToken`。
 
-[finishToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L489")就是设置`end`、`type`、`value`属性，因为此时已经读取了一个完整的`token`，可以获取到它的结束位置、类型和真正的值了。
+`finishToken`就是设置`end`、`type`、`value`属性，因为此时已经读取了一个完整的`token`，可以获取到它的结束位置、类型和真正的值了。
 
 ```ts
 tsfinishToken(type: TokenType, val: any): void {
@@ -314,17 +309,17 @@ tsfinishToken(type: TokenType, val: any): void {
 
 回到`Parser`的`parse`方法，之后会进入
 
-1. [parseTopLevel](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L114 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L114") =>
-2. [parseProgram](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L123 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L123") =>
-3. [parseBlockBody](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L950 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L950") =>
-4. [parseBlockOrModuleBlockBody](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L971 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L971") =>
-5. [parseStatement](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L243 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L243") =>
-6. [parseStatementContent](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L250 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L250")，也就是解析语句。
+1. `parseTopLevel` =>
+2. `parseProgram` =>
+3. `parseBlockBody` =>
+4. `parseBlockOrModuleBlockBody` =>
+5. `parseStatement` =>
+6. `parseStatementContent`，也就是解析语句。
 
 ```js
 parseBlockOrModuleBlockBody(
-  body: N.Statement[],
-  directives: ?(N.Directive[]),
+  body: N.Statement`],
+  directives: ?(N.Directive`]),
   topLevel: boolean,
   end: TokenType,
   afterBlockParse?: (hasStrictModeDirective: boolean) => void,
@@ -370,7 +365,7 @@ parseBlockOrModuleBlockBody(
 }
 ```
 
-[parseStatementContent](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L250 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L250")根据`startType`类型解析不同的声明，比如`function/do/while/break`等，这里是`const`，会进入[parseVarStatement](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802")。
+`parseStatementContent`根据`startType`类型解析不同的声明，比如`function/do/while/break`等，这里是`const`，会进入`parseVarStatement`。
 
 ```ts
 tsexport default class StatementParser extends ExpressionParser {
@@ -431,7 +426,7 @@ tsexport default class StatementParser extends ExpressionParser {
 }
 ```
 
-[parseVarStatement](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802")又会调用[next](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L159 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L159") => [nextToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298")，去解析下一个`token`，这个例子中是`a`。
+`parseVarStatement`又会调用`next` => `nextToken`，去解析下一个`token`，这个例子中是`a`。
 
 ```js
 next(): void {
@@ -448,7 +443,7 @@ next(): void {
 }
 ```
 
-[parseVarStatement](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802")之后会进入[parseVar](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L1107 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L1107")，`parseVar`会新建一个`node`，作为`var`声明，然后调用[eat](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L174 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L174").
+`parseVarStatement`之后会进入`parseVar`，`parseVar`会新建一个`node`，作为`var`声明，然后调用`eat`.
 
 ```js
 parseVar(
@@ -456,7 +451,7 @@ parseVar(
   isFor: boolean,
   kind: "var" | "let" | "const",
 ): N.VariableDeclaration {
-  const declarations = (node.declarations = []);
+  const declarations = (node.declarations = `]);
   const isTypescript = this.hasPlugin("typescript");
   node.kind = kind;
   for (;;) {
@@ -499,11 +494,11 @@ parseVar(
 }
 ```
 
-[eat](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L174 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L174")方法在`Tokenizer`中，这里会调用[next](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L159 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L159") => [nextToken](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L298") => [getTokenFromCode](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L83 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L83") => [ReadNumber](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1228 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/tokenizer/index.js#L1228")，解析下一个字符也就是`1`。然后返回`true`，进入[parseMaybeAssignDisallowIn](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/expression.js#L240 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/expression.js#L240")。
+`eat`方法在`Tokenizer`中，这里会调用`next` => `nextToken` => `getTokenFromCode` => `ReadNumber`，解析下一个字符也就是`1`。然后返回`true`，进入`parseMaybeAssignDisallowIn`。
 
-[parseMaybeAssignDisallowIn](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/expression.js#L240 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/expression.js#L240")这里不再展开了，最后会得到一个`type`为`NumericLiteral`类型的`Node`的节点，并赋值给`dcl.init`。
+`parseMaybeAssignDisallowIn`这里不再展开了，最后会得到一个`type`为`NumericLiteral`类型的`Node`的节点，并赋值给`dcl.init`。
 
-之后在[parseVar](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L1107 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L1107")中调用`declarations.push(this.finishNode(decl, "VariableDeclarator"))`，结束`VariableDeclarator`这个`Node`的解析。
+之后在`parseVar`中调用`declarations.push(this.finishNode(decl, "VariableDeclarator"))`，结束`VariableDeclarator`这个`Node`的解析。
 
 ```js
 eat(type: TokenType): boolean {
@@ -516,13 +511,13 @@ eat(type: TokenType): boolean {
 }
 ```
 
-回到[parseVarStatement](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L802")中，最后调用`this.finishNode(node, "VariableDeclaration")`结束`VariableDeclaration`这个`Node`的解析。
+回到`parseVarStatement`中，最后调用`this.finishNode(node, "VariableDeclaration")`结束`VariableDeclaration`这个`Node`的解析。
 
-回到[parseBlockOrModuleBlockBody](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L971 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L971")中，`smt`解析完后会放到`body`中，然后再次调用`next` => `nextToken`，这次`state.pos`为11，`this.length`也是11，会调用`finishToken(tt.eof)`。
+回到`parseBlockOrModuleBlockBody`中，`smt`解析完后会放到`body`中，然后再次调用`next` => `nextToken`，这次`state.pos`为11，`this.length`也是11，会调用`finishToken(tt.eof)`。
 
-回到[parseProgram](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L123 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L123")中，调用`finishNode(program, "Program")`，结束`program`的解析。
+回到`parseProgram`中，调用`finishNode(program, "Program")`，结束`program`的解析。
 
-再回到[parseTopLevel](https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L114 "https://github.com/babel/babel/blob/v7.16.4/packages/babel-parser/src/parser/statement.js#L114")中，调用`this.finishNode(file, "File")`，结束`File`的解析。
+再回到`parseTopLevel`中，调用`this.finishNode(file, "File")`，结束`File`的解析。
 
 ```js
 nextToken(): void {
@@ -559,7 +554,7 @@ nextToken(): void {
 12. 将`NodeB`赋值给`NodeA`的`program`属性；
 13. 返回`File`类型的`Node`节点。
 
-下面贴一下`const a = 1`这个简单例子的AST（省略了`loc/errors/comments`等属性），也可以去[AST Explorer](https://astexplorer.net/ "https://astexplorer.net/")这个网站查看。
+下面贴一下`const a = 1`这个简单例子的AST（省略了`loc/errors/comments`等属性），也可以去`AST Explorer`这个网站查看。
 
 ```js
 {
@@ -572,12 +567,12 @@ nextToken(): void {
     "end": 11,
     "sourceType": "module",
     "interpreter": null,
-    "body": [
+    "body": `
       {
         "type": "VariableDeclaration",
         "start": 0,
         "end": 11,
-        "declarations": [
+        "declarations": `
           {
             "type": "VariableDeclarator",
             "start": 6,
@@ -610,7 +605,7 @@ nextToken(): void {
 ### 3. 流程图
 
 下面是一张流程图，方便加深理解。
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c48acf6083e48cca2339e3cfe061187~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+!``
 ### 五、总结
 
 通过上面这个例子，可以看出：
@@ -622,14 +617,14 @@ nextToken(): void {
 
 ### 六、系列文章
 
-1. [Babel基础](https://juejin.cn/post/7041067247615344654 "https://juejin.cn/post/7041067247615344654")
-2. [Babel源码解析之@babel/core](https://juejin.cn/post/7041068341754069006/ "https://juejin.cn/post/7041068341754069006/")
+1. `Babel基础`
+2. `Babel源码解析之@babel/core`
 3. Babel源码解析之@babel/parser
-4. [Babel源码解析之@babel/traverse](https://juejin.cn/post/7041069084292677663/ "https://juejin.cn/post/7041069084292677663/")
-5. [Babel源码解析之@babel/generator](https://juejin.cn/post/7041069387607965710 "https://juejin.cn/post/7041069387607965710")
+4. `Babel源码解析之@babel/traverse`
+5. `Babel源码解析之@babel/generator`
 
 ### 七、相关资料
 
-1. [the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler "https://github.com/jamiebuilds/the-super-tiny-compiler")
-2. [babel-handbook](https://github.com/jamiebuilds/babel-handbook "https://github.com/jamiebuilds/babel-handbook")
-3. [loose-mode](https://2ality.com/2015/12/babel6-loose-mode.html "https://2ality.com/2015/12/babel6-loose-mode.html")
+1. `the-super-tiny-compiler`
+2. `babel-handbook`
+3. `loose-mode`

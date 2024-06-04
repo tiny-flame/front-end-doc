@@ -25,12 +25,12 @@ const gulpSSH = new GulpSSH({
 // 备份，删除旧文件
 gulp.task('OnDel', () => {
     return gulpSSH
-        .exec(['rm -rf /var/website/front_end/www_Backand/blog_front_back/*', 'cp -r /var/website/front_end/blog_front/* /var/website/front_end/www_Backand/blog_front_back'])
+        .exec(['rm -rf /var/website/front_end/front-end-doc/**'])
 })
 
 // 上传新文件
 gulp.task('remotePublish', () => {
-    gulp.src(['./dist/**'])
+    gulp.src(['./.vitepress/dist/**'])
         .pipe(sftp({
             host: '112.124.66.58',
             port: '22',
